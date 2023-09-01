@@ -16,6 +16,9 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setUp() {
+        self.tabBar.unselectedItemTintColor = .systemGray
+        self.tabBar.tintColor = .white
+        
         let searchVC = SearchViewController()
         searchVC.tabBarItem = UITabBarItem(title: "検索", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         let libraryVC = LibraryViewController()

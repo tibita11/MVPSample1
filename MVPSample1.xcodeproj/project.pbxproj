@@ -18,6 +18,7 @@
 		A5EDDD922AA1EBBF003A2C65 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD912AA1EBBF003A2C65 /* SearchViewController.swift */; };
 		A5EDDD942AA1ECDE003A2C65 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD932AA1ECDE003A2C65 /* Router.swift */; };
 		A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD992AA1EF64003A2C65 /* LibraryViewController.swift */; };
+		A5EDDD9C2AA20284003A2C65 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD9B2AA20284003A2C65 /* Const.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		A5EDDD912AA1EBBF003A2C65 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A5EDDD932AA1ECDE003A2C65 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A5EDDD992AA1EF64003A2C65 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		A5EDDD9B2AA20284003A2C65 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 		A5EDDD8E2AA1EA45003A2C65 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDDD9B2AA20284003A2C65 /* Const.swift */,
 				A5EDDD8F2AA1EA70003A2C65 /* MainTabBarController.swift */,
 				A5EDDD932AA1ECDE003A2C65 /* Router.swift */,
 			);
@@ -349,6 +352,7 @@
 				A5EDDD922AA1EBBF003A2C65 /* SearchViewController.swift in Sources */,
 				A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */,
 				A5EDDD902AA1EA70003A2C65 /* MainTabBarController.swift in Sources */,
+				A5EDDD9C2AA20284003A2C65 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

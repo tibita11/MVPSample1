@@ -15,4 +15,6 @@ final class Const {
     
     // フォント
     static let TitleLabelFont = UIFont.systemFont(ofSize: 30, weight: .bold)
+    static let MediumTextLabelFont = UIFont.systemFont(ofSize: 16)
+    static let SmallTextLabelFont = UIFont.systemFont(ofSize: 14)
 }

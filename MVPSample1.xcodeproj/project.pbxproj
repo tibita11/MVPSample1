@@ -19,6 +19,10 @@
 		A5EDDD942AA1ECDE003A2C65 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD932AA1ECDE003A2C65 /* Router.swift */; };
 		A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD992AA1EF64003A2C65 /* LibraryViewController.swift */; };
 		A5EDDD9C2AA20284003A2C65 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD9B2AA20284003A2C65 /* Const.swift */; };
+		A5EDDD9E2AA23072003A2C65 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD9D2AA23072003A2C65 /* Category.swift */; };
+		A5EDDDA12AA37BF1003A2C65 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA02AA37BF1003A2C65 /* CategoryCollectionViewCell.swift */; };
+		A5EDDDA42AA37EEE003A2C65 /* CategoryCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA32AA37EEE003A2C65 /* CategoryCollectionReusableView.swift */; };
+		A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		A5EDDD932AA1ECDE003A2C65 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A5EDDD992AA1EF64003A2C65 /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
 		A5EDDD9B2AA20284003A2C65 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		A5EDDD9D2AA23072003A2C65 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		A5EDDDA02AA37BF1003A2C65 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		A5EDDDA32AA37EEE003A2C65 /* CategoryCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionReusableView.swift; sourceTree = "<group>"; };
+		A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,8 @@
 		A5EDDD8B2AA1E9E2003A2C65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDDDA22AA37ECE003A2C65 /* Headers */,
+				A5EDDD9F2AA37BCE003A2C65 /* Cells */,
 				A5EDDD912AA1EBBF003A2C65 /* SearchViewController.swift */,
 			);
 			path = Views;
@@ -170,6 +180,7 @@
 		A5EDDD8D2AA1EA04003A2C65 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -180,6 +191,7 @@
 				A5EDDD9B2AA20284003A2C65 /* Const.swift */,
 				A5EDDD8F2AA1EA70003A2C65 /* MainTabBarController.swift */,
 				A5EDDD932AA1ECDE003A2C65 /* Router.swift */,
+				A5EDDD9D2AA23072003A2C65 /* Category.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -214,6 +226,22 @@
 				A5EDDD992AA1EF64003A2C65 /* LibraryViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A5EDDD9F2AA37BCE003A2C65 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A5EDDDA02AA37BF1003A2C65 /* CategoryCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A5EDDDA22AA37ECE003A2C65 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A5EDDDA32AA37EEE003A2C65 /* CategoryCollectionReusableView.swift */,
+			);
+			path = Headers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +378,13 @@
 				A5EDDD5C2AA1E993003A2C65 /* SceneDelegate.swift in Sources */,
 				A5EDDD942AA1ECDE003A2C65 /* Router.swift in Sources */,
 				A5EDDD922AA1EBBF003A2C65 /* SearchViewController.swift in Sources */,
+				A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */,
+				A5EDDDA12AA37BF1003A2C65 /* CategoryCollectionViewCell.swift in Sources */,
+				A5EDDD9E2AA23072003A2C65 /* Category.swift in Sources */,
 				A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */,
 				A5EDDD902AA1EA70003A2C65 /* MainTabBarController.swift in Sources */,
 				A5EDDD9C2AA20284003A2C65 /* Const.swift in Sources */,
+				A5EDDDA42AA37EEE003A2C65 /* CategoryCollectionReusableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

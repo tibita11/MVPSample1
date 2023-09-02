@@ -19,8 +19,12 @@ final class MainTabBarController: UITabBarController {
         self.tabBar.unselectedItemTintColor = .systemGray
         self.tabBar.tintColor = .white
         
+        // MEMO: 初期化時にPresenterを設定する
         let searchVC = SearchViewController()
         searchVC.tabBarItem = UITabBarItem(title: "検索", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        let presenter = SearchViewPresenter(output: searchVC)
+        searchVC.inject(presenter: presenter)
+        
         let libraryVC = LibraryViewController()
         libraryVC.tabBarItem = UITabBarItem(title: "ライブラリ", image: UIImage(systemName: "books.vertical.fill"), tag: 0)
         viewControllers = [searchVC, libraryVC]

@@ -11,6 +11,10 @@ final class SearchViewController: UIViewController {
     
     private let titleLabel = UILabel()
     private let searchBar = UISearchBar()
+    private var categoryCollectionView: UICollectionView!
+    private var presenter: SearchViewPresenter!
+    
+    let section = [["test", "test2", "test3"], ["test", "test2", "test3"]]
     
     private lazy var initViewLayout: Void = {
         setUpLayout()
@@ -38,6 +42,12 @@ final class SearchViewController: UIViewController {
         _ = initViewLayout
     }
     
+    // MARK: - Action
+    
+    func inject(presenter: SearchViewPresenter) {
+        self.presenter = presenter
+    }
+    
     // MARK: - Layout
      
     private func setUpLayout() {
@@ -46,6 +56,7 @@ final class SearchViewController: UIViewController {
         setUpGradientLayer()
         setUpTitleLabel()
         setUpSearchBar()
+        setUpCategoryCollectionView()
     }
     
     private func setUpGradientLayer() {
@@ -68,7 +79,7 @@ final class SearchViewController: UIViewController {
         self.view.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: heightToNavBar),
+            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: heightToNavBar + 30),
             titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
             titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
             titleLabel.heightAnchor.constraint(equalToConstant: 70)
@@ -99,4 +110,60 @@ final class SearchViewController: UIViewController {
             searchBar.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
+    
+    private func setUpCategoryCollectionView() {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.itemSize = CGSize(width: self.view.bounds.width, height: 20)
+        collectionViewLayout.headerReferenceSize = CGSize(width: self.view.bounds.width, height: 50)
+        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        categoryCollectionView.backgroundColor = .clear
+        categoryCollectionView.dataSource = self
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "categoryCell")
+        categoryCollectionView.register(CategoryCollectionReusableView.self,
+                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                        withReuseIdentifier: "sectionHeader")
+        categoryCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(categoryCollectionView)
+        
+        let tabHeight = tabBarController?.tabBar.frame.size.height ?? 0
+        NSLayoutConstraint.activate([
+            categoryCollectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 10),
+            categoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            categoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            categoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -tabHeight)
+        ])
+    }
 }
+
+
+// MARK: - UICollectionViewDataSource
+
+extension SearchViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        presenter.category.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        presenter.category[section].itemSection.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
+        cell.title.text = presenter.category[indexPath.section].itemSection[indexPath.row].title
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "sectionHeader", for: indexPath) as! CategoryCollectionReusableView
+        header.title.text = presenter.category[indexPath.section].title
+        return header
+    }
+}
+
+// MARK: - SearchViewPresenterOutput
+
+extension SearchViewController: SearchViewPresenterOutput {
+    
+}
+ 

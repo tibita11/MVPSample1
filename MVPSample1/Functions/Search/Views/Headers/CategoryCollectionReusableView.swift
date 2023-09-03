@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryCollectionReusableView: UICollectionReusableView {
+final class CategoryCollectionReusableView: UICollectionReusableView {
     let title = UILabel()
     
     override init(frame: CGRect) {
@@ -36,8 +36,8 @@ class CategoryCollectionReusableView: UICollectionReusableView {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: self.topAnchor),
-            title.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            title.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 15),
+            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
             title.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }

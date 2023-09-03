@@ -14,8 +14,6 @@ final class SearchViewController: UIViewController {
     private var categoryCollectionView: UICollectionView!
     private var presenter: SearchViewPresenter!
     
-    let section = [["test", "test2", "test3"], ["test", "test2", "test3"]]
-    
     private lazy var initViewLayout: Void = {
         setUpLayout()
     }()
@@ -113,7 +111,7 @@ final class SearchViewController: UIViewController {
     
     private func setUpCategoryCollectionView() {
         let collectionViewLayout = UICollectionViewFlowLayout()
-        collectionViewLayout.itemSize = CGSize(width: self.view.bounds.width, height: 20)
+        collectionViewLayout.itemSize = CGSize(width: self.view.bounds.width, height: 30)
         collectionViewLayout.headerReferenceSize = CGSize(width: self.view.bounds.width, height: 50)
         categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         categoryCollectionView.backgroundColor = .clear
@@ -151,6 +149,7 @@ extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
         cell.title.text = presenter.category[indexPath.section].itemSection[indexPath.row].title
+        cell.imageView.image = UIImage(systemName: presenter.category[indexPath.section].itemSection[indexPath.row].imageName)
         return cell
     }
     

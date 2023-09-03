@@ -32,6 +32,11 @@ struct Category {
         ]
         return category
     }
+    
+    static func getSection(at indexPath: IndexPath) -> ItemSection {
+        let category = createCategory()
+        return category[indexPath.section].itemSection[indexPath.row]
+    }
 }
 
 struct ItemSection {

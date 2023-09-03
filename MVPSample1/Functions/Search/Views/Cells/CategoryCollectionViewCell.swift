@@ -13,6 +13,15 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     let indicatorImageView = UIImageView()
     private let separatorLineView = UIView()
     
+    override var isSelected: Bool {
+        // MEMO: 選択時の色を変える
+        didSet {
+            contentView.backgroundColor = isSelected ? .systemGray : .clear
+        }
+    }
+    
+    // MARK: - View Life Cycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

@@ -15,4 +15,17 @@ final class Router {
         window?.rootViewController = rootVC
         window?.makeKeyAndVisible()
     }
+    
+    static func showAllWorksList(fromVC: UIViewController, itemSection: ItemSection) {
+        let nextVC = AllWorksListViewController(itemSection: itemSection)
+        show(fromVC: fromVC, nextVC: nextVC)
+    }
+    
+    private static func show(fromVC: UIViewController, nextVC: UIViewController) {
+        if let nav = fromVC.navigationController {
+            nav.pushViewController(nextVC, animated: true)
+        } else {
+            fromVC.present(nextVC, animated: true, completion: nil)
+        }
+    }
 }

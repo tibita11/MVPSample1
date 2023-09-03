@@ -116,6 +116,7 @@ final class SearchViewController: UIViewController {
         categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         categoryCollectionView.backgroundColor = .clear
         categoryCollectionView.dataSource = self
+        categoryCollectionView.delegate = self
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "categoryCell")
         categoryCollectionView.register(CategoryCollectionReusableView.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -160,9 +161,21 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 }
 
+
+// MARK: - UICollectionViewDelegate
+
+extension SearchViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.getSection(at: indexPath)
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
 // MARK: - SearchViewPresenterOutput
 
 extension SearchViewController: SearchViewPresenterOutput {
-    
+    func transitionToNext(itemSection: ItemSection) {
+        Router.showAllWorksList(fromVC: self, itemSection: itemSection)
+    }
 }
  

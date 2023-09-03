@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AllWorksListViewController: UIViewController {
+final class AllWorksListViewController: UIViewController {
     
     private let itemSection: ItemSection!
     private let titleLabel = UILabel()

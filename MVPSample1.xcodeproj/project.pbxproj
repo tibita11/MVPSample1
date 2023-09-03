@@ -26,6 +26,7 @@
 		A5EDDDA82AA46ACF003A2C65 /* AllWorksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA72AA46ACF003A2C65 /* AllWorksListViewController.swift */; };
 		A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */; };
 		A5EDDDAC2AA4940F003A2C65 /* WorksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDAB2AA4940F003A2C65 /* WorksDetailViewController.swift */; };
+		A5EDDDAE2AA4C8F8003A2C65 /* LibraryViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A5EDDDA72AA46ACF003A2C65 /* AllWorksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWorksListViewController.swift; sourceTree = "<group>"; };
 		A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWorksCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EDDDAB2AA4940F003A2C65 /* WorksDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksDetailViewController.swift; sourceTree = "<group>"; };
+		A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +226,7 @@
 		A5EDDD972AA1EF41003A2C65 /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5EDDD5A2AA1E993003A2C65 /* AppDelegate.swift in Sources */,
+				A5EDDDAE2AA4C8F8003A2C65 /* LibraryViewPresenter.swift in Sources */,
 				A5EDDD5C2AA1E993003A2C65 /* SceneDelegate.swift in Sources */,
 				A5EDDDAC2AA4940F003A2C65 /* WorksDetailViewController.swift in Sources */,
 				A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */,

@@ -7,11 +7,24 @@
 
 import UIKit
 
-class LibraryViewController: UIViewController {
+final class LibraryViewController: UIViewController {
+    
+    private let titleLabel = UILabel()
+    private var categoryCollectionView: UICollectionView!
+    private var presenter: LibraryViewPresenterInput!
     
     private lazy var initViewLayout: Void = {
         setUpLayout()
     }()
+    
+    private var heightToNavBar: CGFloat {
+        var height: CGFloat = 0
+        if let navigationController = self.navigationController {
+            let navBarMaxY = navigationController.navigationBar.frame.maxY
+            height = navBarMaxY
+        }
+        return height
+    }
     
     // MARK: - View Life Cycle
 
@@ -26,12 +39,20 @@ class LibraryViewController: UIViewController {
         _ = initViewLayout
     }
     
+    // MARK: - Action
+    
+    func inject(presenter: LibraryViewPresenterInput) {
+        self.presenter = presenter
+    }
+    
     // MARK: - Layout
     
     private func setUpLayout() {
         self.view.backgroundColor = .systemBackground
         
         setUpGradientLayer()
+        setUpTitleLabel()
+        setUpCategoryCollectionView()
     }
     
     private func setUpGradientLayer() {
@@ -44,4 +65,62 @@ class LibraryViewController: UIViewController {
         gradientLayer.colors = gradientColors
         self.view.layer.insertSublayer(gradientLayer, at:0)
     }
+    
+    private func setUpTitleLabel() {
+        titleLabel.text = "ライブラリ"
+        titleLabel.font = Const.TitleLabelFont
+        titleLabel.textColor = .white
+        titleLabel.textAlignment = .left
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(titleLabel)
+        
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: heightToNavBar + 30),
+            titleLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 15),
+            titleLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -15),
+            titleLabel.heightAnchor.constraint(equalToConstant: 70)
+        ])
+    }
+    
+    private func setUpCategoryCollectionView() {
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.itemSize = CGSize(width: self.view.bounds.width, height: 40)
+        categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        categoryCollectionView.backgroundColor = .clear
+        categoryCollectionView.dataSource = self
+        categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        categoryCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(categoryCollectionView)
+        
+        let tabHeight = tabBarController?.tabBar.frame.size.height ?? 0
+        NSLayoutConstraint.activate([
+            categoryCollectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            categoryCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            categoryCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            categoryCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -tabHeight)
+        ])
+    }
+}
+
+
+// MARK: - UICollectionViewDataSource
+
+extension LibraryViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        presenter.itemData[section].count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CategoryCollectionViewCell
+        cell.title.text = presenter.itemData[indexPath.section][indexPath.row].title
+        cell.imageView.image = UIImage(systemName: presenter.itemData[indexPath.section][indexPath.row].imageName)
+        return cell
+    }
+}
+
+
+// MARK: - LibraryViewPresenterOutput
+
+extension LibraryViewController: LibraryViewPresenterOutput {
+    
 }

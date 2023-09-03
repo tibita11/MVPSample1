@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WorksDetailViewController: UIViewController {
+final class WorksDetailViewController: UIViewController {
     
     private let itemData: ItemData!
     private let backButton = UIButton()

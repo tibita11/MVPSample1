@@ -11,7 +11,6 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     let title = UILabel()
     let imageView = UIImageView()
     let indicatorImageView = UIImageView()
-    private let separatorLineView = UIView()
     
     override var isSelected: Bool {
         // MEMO: 選択時の色を変える
@@ -44,8 +43,9 @@ final class CategoryCollectionViewCell: UICollectionViewCell {
     }
     
     private func setUpSeparatorLineView() {
+        let separatorLineView = UIView()
         separatorLineView.translatesAutoresizingMaskIntoConstraints = false
-        separatorLineView.backgroundColor = .systemGray
+        separatorLineView.backgroundColor = Const.spaceLineColor
         self.contentView.addSubview(separatorLineView)
         
         NSLayoutConstraint.activate([

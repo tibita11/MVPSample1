@@ -31,7 +31,7 @@ final class CategoryCollectionReusableView: UICollectionReusableView {
     private func setUpTitle() {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.textColor = .white
-        title.font = Const.SmallTextLabelFont
+        title.font = Const.smallTextLabelFont
         self.addSubview(title)
         
         NSLayoutConstraint.activate([

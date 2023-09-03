@@ -24,6 +24,7 @@
 		A5EDDDA42AA37EEE003A2C65 /* CategoryCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA32AA37EEE003A2C65 /* CategoryCollectionReusableView.swift */; };
 		A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */; };
 		A5EDDDA82AA46ACF003A2C65 /* AllWorksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA72AA46ACF003A2C65 /* AllWorksListViewController.swift */; };
+		A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		A5EDDDA32AA37EEE003A2C65 /* CategoryCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionReusableView.swift; sourceTree = "<group>"; };
 		A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
 		A5EDDDA72AA46ACF003A2C65 /* AllWorksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWorksListViewController.swift; sourceTree = "<group>"; };
+		A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWorksCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EDDDA02AA37BF1003A2C65 /* CategoryCollectionViewCell.swift */,
+				A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 			files = (
 				A5EDDD5A2AA1E993003A2C65 /* AppDelegate.swift in Sources */,
 				A5EDDD5C2AA1E993003A2C65 /* SceneDelegate.swift in Sources */,
+				A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */,
 				A5EDDD942AA1ECDE003A2C65 /* Router.swift in Sources */,
 				A5EDDD922AA1EBBF003A2C65 /* SearchViewController.swift in Sources */,
 				A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */,

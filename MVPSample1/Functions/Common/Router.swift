@@ -11,8 +11,7 @@ final class Router {
     /// アプリ起動時にルートを設定する
     static func showRoot(window: UIWindow?) {
         let vc = MainTabBarController()
-        let rootVC = UINavigationController(rootViewController: vc)
-        window?.rootViewController = rootVC
+        window?.rootViewController = vc
         window?.makeKeyAndVisible()
     }
     

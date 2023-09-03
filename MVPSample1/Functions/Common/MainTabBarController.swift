@@ -21,12 +21,15 @@ final class MainTabBarController: UITabBarController {
         
         // MEMO: 初期化時にPresenterを設定する
         let searchVC = SearchViewController()
-        searchVC.tabBarItem = UITabBarItem(title: "検索", image: UIImage(systemName: "magnifyingglass"), tag: 0)
         let presenter = SearchViewPresenter(output: searchVC)
         searchVC.inject(presenter: presenter)
-        
+        let searchNavigationController = UINavigationController(rootViewController: searchVC)
+        searchNavigationController.tabBarItem = UITabBarItem(title: "検索", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+
         let libraryVC = LibraryViewController()
-        libraryVC.tabBarItem = UITabBarItem(title: "ライブラリ", image: UIImage(systemName: "books.vertical.fill"), tag: 0)
-        viewControllers = [searchVC, libraryVC]
+        let libraryNavigationController = UINavigationController(rootViewController: libraryVC)
+        libraryNavigationController.tabBarItem = UITabBarItem(title: "ライブラリ", image: UIImage(systemName: "books.vertical.fill"), tag: 0)
+        
+        viewControllers = [searchNavigationController, libraryNavigationController]
     }
 }

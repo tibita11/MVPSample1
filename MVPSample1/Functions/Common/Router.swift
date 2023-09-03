@@ -20,6 +20,11 @@ final class Router {
         show(fromVC: fromVC, nextVC: nextVC)
     }
     
+    static func showWorksDetail(fromVC: UIViewController, itemData: ItemData) {
+        let nextVC = WorksDetailViewController(itemData: itemData)
+        fromVC.present(nextVC, animated: true)
+    }
+    
     private static func show(fromVC: UIViewController, nextVC: UIViewController) {
         if let nav = fromVC.navigationController {
             nav.pushViewController(nextVC, animated: true)

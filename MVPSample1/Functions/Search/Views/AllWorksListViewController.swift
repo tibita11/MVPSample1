@@ -92,6 +92,7 @@ class AllWorksListViewController: UIViewController {
         allWorksCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         allWorksCollectionView.backgroundColor = .clear
         allWorksCollectionView.dataSource = self
+        allWorksCollectionView.delegate = self
         allWorksCollectionView.register(AllWorksCollectionViewCell.self, forCellWithReuseIdentifier: "allWorksCell")
         allWorksCollectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(allWorksCollectionView)
@@ -119,5 +120,14 @@ extension AllWorksListViewController: UICollectionViewDataSource {
         cell.titleLabel.text = itemSection.items[indexPath.row].title
         cell.descriptionLabel.text = itemSection.items[indexPath.row].description
         return cell
+    }
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension AllWorksListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Router.showWorksDetail(fromVC: self, itemData:  itemSection.items[indexPath.row])
     }
 }

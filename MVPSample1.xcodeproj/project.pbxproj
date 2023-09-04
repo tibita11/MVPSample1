@@ -27,6 +27,10 @@
 		A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */; };
 		A5EDDDAC2AA4940F003A2C65 /* WorksDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDAB2AA4940F003A2C65 /* WorksDetailViewController.swift */; };
 		A5EDDDAE2AA4C8F8003A2C65 /* LibraryViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */; };
+		A5EDDDB12AA57067003A2C65 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDAF2AA57067003A2C65 /* Model.xcdatamodeld */; };
+		A5EDDDB42AA573DD003A2C65 /* MyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB22AA573DD003A2C65 /* MyList+CoreDataClass.swift */; };
+		A5EDDDB52AA573DD003A2C65 /* MyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB32AA573DD003A2C65 /* MyList+CoreDataProperties.swift */; };
+		A5EDDDB72AA5798B003A2C65 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB62AA5798B003A2C65 /* CoreDataRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +75,10 @@
 		A5EDDDA92AA47D19003A2C65 /* AllWorksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWorksCollectionViewCell.swift; sourceTree = "<group>"; };
 		A5EDDDAB2AA4940F003A2C65 /* WorksDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksDetailViewController.swift; sourceTree = "<group>"; };
 		A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewPresenter.swift; sourceTree = "<group>"; };
+		A5EDDDB02AA57067003A2C65 /* MyListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyListModel.xcdatamodel; sourceTree = "<group>"; };
+		A5EDDDB22AA573DD003A2C65 /* MyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataClass.swift"; sourceTree = "<group>"; };
+		A5EDDDB32AA573DD003A2C65 /* MyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A5EDDDB62AA5798B003A2C65 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +109,8 @@
 		A5EDDD4D2AA1E993003A2C65 = {
 			isa = PBXGroup;
 			children = (
+				A5EDDDB22AA573DD003A2C65 /* MyList+CoreDataClass.swift */,
+				A5EDDDB32AA573DD003A2C65 /* MyList+CoreDataProperties.swift */,
 				A5EDDD582AA1E993003A2C65 /* MVPSample1 */,
 				A5EDDD6F2AA1E995003A2C65 /* MVPSample1Tests */,
 				A5EDDD792AA1E995003A2C65 /* MVPSample1UITests */,
@@ -127,6 +137,7 @@
 				A5EDDD622AA1E995003A2C65 /* Assets.xcassets */,
 				A5EDDD642AA1E995003A2C65 /* LaunchScreen.storyboard */,
 				A5EDDD672AA1E995003A2C65 /* Info.plist */,
+				A5EDDDAF2AA57067003A2C65 /* Model.xcdatamodeld */,
 			);
 			path = MVPSample1;
 			sourceTree = "<group>";
@@ -202,6 +213,7 @@
 				A5EDDD8F2AA1EA70003A2C65 /* MainTabBarController.swift */,
 				A5EDDD932AA1ECDE003A2C65 /* Router.swift */,
 				A5EDDD9D2AA23072003A2C65 /* Category.swift */,
+				A5EDDDB62AA5798B003A2C65 /* CoreDataRepository.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -389,15 +401,19 @@
 				A5EDDD5A2AA1E993003A2C65 /* AppDelegate.swift in Sources */,
 				A5EDDDAE2AA4C8F8003A2C65 /* LibraryViewPresenter.swift in Sources */,
 				A5EDDD5C2AA1E993003A2C65 /* SceneDelegate.swift in Sources */,
+				A5EDDDB12AA57067003A2C65 /* Model.xcdatamodeld in Sources */,
 				A5EDDDAC2AA4940F003A2C65 /* WorksDetailViewController.swift in Sources */,
 				A5EDDDAA2AA47D19003A2C65 /* AllWorksCollectionViewCell.swift in Sources */,
 				A5EDDD942AA1ECDE003A2C65 /* Router.swift in Sources */,
 				A5EDDD922AA1EBBF003A2C65 /* SearchViewController.swift in Sources */,
 				A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */,
+				A5EDDDB52AA573DD003A2C65 /* MyList+CoreDataProperties.swift in Sources */,
 				A5EDDDA12AA37BF1003A2C65 /* CategoryCollectionViewCell.swift in Sources */,
 				A5EDDDA82AA46ACF003A2C65 /* AllWorksListViewController.swift in Sources */,
 				A5EDDD9E2AA23072003A2C65 /* Category.swift in Sources */,
+				A5EDDDB72AA5798B003A2C65 /* CoreDataRepository.swift in Sources */,
 				A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */,
+				A5EDDDB42AA573DD003A2C65 /* MyList+CoreDataClass.swift in Sources */,
 				A5EDDD902AA1EA70003A2C65 /* MainTabBarController.swift in Sources */,
 				A5EDDD9C2AA20284003A2C65 /* Const.swift in Sources */,
 				A5EDDDA42AA37EEE003A2C65 /* CategoryCollectionReusableView.swift in Sources */,
@@ -740,6 +756,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A5EDDDAF2AA57067003A2C65 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A5EDDDB02AA57067003A2C65 /* MyListModel.xcdatamodel */,
+			);
+			currentVersion = A5EDDDB02AA57067003A2C65 /* MyListModel.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A5EDDD4E2AA1E993003A2C65 /* Project object */;
 }

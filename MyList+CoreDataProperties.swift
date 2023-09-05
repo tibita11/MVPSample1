@@ -2,7 +2,7 @@
 //  MyList+CoreDataProperties.swift
 //  MVPSample1
 //
-//  Created by 鈴木楓香 on 2023/09/04.
+//  Created by 鈴木楓香 on 2023/09/05.
 //
 //
 
@@ -18,6 +18,7 @@ extension MyList {
 
     @NSManaged public var title: String?
     @NSManaged public var detail: String?
+    @NSManaged public var id: Int16
 
 }
 

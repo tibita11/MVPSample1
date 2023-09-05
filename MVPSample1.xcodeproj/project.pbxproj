@@ -31,6 +31,7 @@
 		A5EDDDB42AA573DD003A2C65 /* MyList+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB22AA573DD003A2C65 /* MyList+CoreDataClass.swift */; };
 		A5EDDDB52AA573DD003A2C65 /* MyList+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB32AA573DD003A2C65 /* MyList+CoreDataProperties.swift */; };
 		A5EDDDB72AA5798B003A2C65 /* CoreDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB62AA5798B003A2C65 /* CoreDataRepository.swift */; };
+		A5EDDDB92AA72C3D003A2C65 /* WorksDetailViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDDB82AA72C3D003A2C65 /* WorksDetailViewPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		A5EDDDB22AA573DD003A2C65 /* MyList+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataClass.swift"; sourceTree = "<group>"; };
 		A5EDDDB32AA573DD003A2C65 /* MyList+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MyList+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		A5EDDDB62AA5798B003A2C65 /* CoreDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataRepository.swift; sourceTree = "<group>"; };
+		A5EDDDB82AA72C3D003A2C65 /* WorksDetailViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorksDetailViewPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EDDDA52AA38188003A2C65 /* SearchViewPresenter.swift */,
+				A5EDDDB82AA72C3D003A2C65 /* WorksDetailViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				A5EDDDA12AA37BF1003A2C65 /* CategoryCollectionViewCell.swift in Sources */,
 				A5EDDDA82AA46ACF003A2C65 /* AllWorksListViewController.swift in Sources */,
 				A5EDDD9E2AA23072003A2C65 /* Category.swift in Sources */,
+				A5EDDDB92AA72C3D003A2C65 /* WorksDetailViewPresenter.swift in Sources */,
 				A5EDDDB72AA5798B003A2C65 /* CoreDataRepository.swift in Sources */,
 				A5EDDD9A2AA1EF64003A2C65 /* LibraryViewController.swift in Sources */,
 				A5EDDDB42AA573DD003A2C65 /* MyList+CoreDataClass.swift in Sources */,

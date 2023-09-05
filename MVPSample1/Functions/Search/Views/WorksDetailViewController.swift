@@ -9,8 +9,9 @@ import UIKit
 
 final class WorksDetailViewController: UIViewController {
     
-    private let itemData: ItemData!
     private let backButton = UIButton()
+    private var presenter: WorksDetailViewPresenterInput!
+    private let myListButton = UIButton()
     
     private lazy var initViewLayout: Void = {
         setUpLayout()
@@ -18,18 +19,11 @@ final class WorksDetailViewController: UIViewController {
     
     // MARK: - View Life Cycle
     
-    init(itemData: ItemData) {
-        self.itemData = itemData
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MEMO: マイリスト登録状況に応じてButton表示を変える
+        animateMyListButton(isRegistered: self.presenter.isRegistered)
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,10 +32,38 @@ final class WorksDetailViewController: UIViewController {
         _ = initViewLayout
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     // MARK: - Action
+    
+    func inject(presenter: WorksDetailViewPresenterInput) {
+        self.presenter = presenter
+    }
     
     @objc private func dismissView() {
         self.dismiss(animated: true)
+    }
+    
+    @objc private func tapMyListButton() {
+        // MEMO: 追加・削除の動きを実装
+        self.presenter.changeMyListStatus()
+    }
+    
+    /// マイリストボタンのアニメーション実行
+    func animateMyListButton(isRegistered: Bool) {
+        let imageName = isRegistered ? "checkmark" : "plus"
+        
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.myListButton.alpha = 0
+        }, completion: { [weak self] _ in
+            self?.myListButton.setImage(UIImage(systemName: imageName), for: .normal)
+            UIView.animate(withDuration: 0.2, animations: { [weak self] in
+                self?.myListButton.alpha = 1
+            })
+        })
     }
     
     // MARK: - Layout
@@ -113,7 +135,7 @@ final class WorksDetailViewController: UIViewController {
         // MEMO: TitleLabel設定
         let titleLabel = UILabel()
         stackView.addArrangedSubview(titleLabel)
-        titleLabel.text = itemData.title
+        titleLabel.text = self.presenter.title
         titleLabel.textColor = .white
         titleLabel.font = Const.largeBoldTextLabelFont
         titleLabel.textAlignment = .left
@@ -128,7 +150,7 @@ final class WorksDetailViewController: UIViewController {
         // MEMO: DescriptionLabel設定
         let descriptionLabel = UILabel()
         stackView.addArrangedSubview(descriptionLabel)
-        descriptionLabel.text = itemData.description
+        descriptionLabel.text = self.presenter.description
         descriptionLabel.font = Const.MediumTextLabelFont
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
@@ -141,7 +163,6 @@ final class WorksDetailViewController: UIViewController {
         ])
         
         // MEMO: MyListButton設定
-        let myListButton = UIButton()
         stackView.addArrangedSubview(myListButton)
         
         var config = UIButton.Configuration.plain()
@@ -151,5 +172,15 @@ final class WorksDetailViewController: UIViewController {
         config.imagePlacement = .top
         config.baseForegroundColor = .white
         myListButton.configuration = config
+        myListButton.addTarget(self, action: #selector(tapMyListButton), for: .touchUpInside)
+    }
+}
+
+
+// MARK: - WorksDetailViewPresenterOutput
+
+extension WorksDetailViewController: WorksDetailViewPresenterOutput {
+    func updateMyList(isRegistered: Bool) {
+        animateMyListButton(isRegistered: isRegistered)
     }
 }

@@ -21,7 +21,9 @@ final class Router {
     }
     
     static func showWorksDetail(fromVC: UIViewController, itemData: ItemData) {
-        let nextVC = WorksDetailViewController(itemData: itemData)
+        let nextVC = WorksDetailViewController()
+        let nextPresenter = WorksDetailViewPresenter(output: nextVC, itemData: itemData)
+        nextVC.inject(presenter: nextPresenter)
         fromVC.present(nextVC, animated: true)
     }
     

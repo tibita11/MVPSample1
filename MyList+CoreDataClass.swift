@@ -13,6 +13,7 @@ import CoreData
 public class MyList: NSManagedObject {
     static func new(itemData: ItemData) -> MyList {
         let entity: MyList = CoreDataRepository.entity()
+        entity.id = itemData.id
         entity.title = itemData.title
         entity.detail = itemData.description
         return entity

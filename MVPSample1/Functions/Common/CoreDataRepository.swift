@@ -49,6 +49,18 @@ extension CoreDataRepository {
     static func delete(_ object: NSManagedObject) {
         context.delete(object)
     }
+    
+    static func fetchObject<T: NSManagedObject>(id: Int16) -> T? {
+        let request = NSFetchRequest<T>(entityName: String(describing: T.self))
+        let predicate = NSPredicate(format:"id = %d",id)
+        request.predicate = predicate
+        
+        do {
+            return try context.fetch(request).first
+        } catch {
+            fatalError("Error: CoreData取得処理に失敗しました。")
+        }
+    }
 }
 
 // MARK: context CRUD

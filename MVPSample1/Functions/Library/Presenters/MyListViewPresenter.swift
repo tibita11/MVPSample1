@@ -12,6 +12,7 @@ enum Section {
 }
 
 protocol MyListViewPresenterInput: AnyObject {
+    var items: [ItemData] { get }
     func fetchArray()
 }
 
@@ -32,10 +33,12 @@ class MyListViewPresenter {
 // MARK: - MyListViewPresenterInput
 
 extension MyListViewPresenter: MyListViewPresenterInput {
-    func fetchArray() {
-        // MEMO: すべての情報を取得
+    var items: [ItemData] {
         let myList: [MyList] = CoreDataRepository.array()
-        let items = myList.map{ItemData(id: $0.id, title: $0.title ?? "", description: $0.detail ?? "")}
+        return myList.map{ItemData(id: $0.id, title: $0.title ?? "", description: $0.detail ?? "")}
+    }
+    
+    func fetchArray() {
         output?.applySnapshot(items: items)
     }
 }

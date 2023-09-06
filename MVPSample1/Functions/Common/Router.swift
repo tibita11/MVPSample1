@@ -24,6 +24,12 @@ final class Router {
         let nextVC = WorksDetailViewController()
         let nextPresenter = WorksDetailViewPresenter(output: nextVC, itemData: itemData)
         nextVC.inject(presenter: nextPresenter)
+        
+        // MEMO: fromVCがUIAdaptivePresentationControllerDelegateに準拠している場合のみ設定
+        if let delegate = fromVC as? UIAdaptivePresentationControllerDelegate {
+            nextVC.presentationController?.delegate = delegate
+        }
+        
         fromVC.present(nextVC, animated: true)
     }
     

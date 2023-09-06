@@ -36,6 +36,8 @@ extension CoreDataRepository {
     static func array<T: NSManagedObject>() -> [T] {
         do {
             let request = NSFetchRequest<T>(entityName: String(describing: T.self))
+            let sortDescripter = NSSortDescriptor(key: "id", ascending: true)
+            request.sortDescriptors = [sortDescripter]
             return try context.fetch(request)
         } catch {
             fatalError()

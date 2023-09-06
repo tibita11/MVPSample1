@@ -44,6 +44,10 @@ final class WorksDetailViewController: UIViewController {
     }
     
     @objc private func dismissView() {
+        if let presentationController = presentationController,
+           let delegate = presentationController.delegate {
+            delegate.presentationControllerDidDismiss?(presentationController)
+        }
         self.dismiss(animated: true)
     }
     

@@ -136,6 +136,7 @@ class MyListViewController: UIViewController {
             return section
         }
         collectionView = UICollectionView(frame: .null, collectionViewLayout: layout)
+        collectionView.delegate = self
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(collectionView)
@@ -171,5 +172,24 @@ extension MyListViewController: MyListViewPresenterOutput {
         snapshot.appendSections([.main])
         snapshot.appendItems(items, toSection: .main)
         dataSource.apply(snapshot, animatingDifferences: true)
+    }
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension MyListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        Router.showWorksDetail(fromVC: self, itemData: self.presenter.items[indexPath.row])
+    }
+}
+
+
+// MARK: - UIAdaptivePresentationControllerDelegate
+
+extension MyListViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        // MEMO: Dismiss後に再取得
+        presenter.fetchArray()
     }
 }

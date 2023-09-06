@@ -87,6 +87,7 @@ final class LibraryViewController: UIViewController {
         collectionViewLayout.itemSize = CGSize(width: self.view.bounds.width, height: 40)
         categoryCollectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         categoryCollectionView.backgroundColor = .clear
+        categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
         categoryCollectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         categoryCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,6 +116,26 @@ extension LibraryViewController: UICollectionViewDataSource {
         cell.title.text = presenter.itemData[indexPath.section][indexPath.row].title
         cell.imageView.image = UIImage(systemName: presenter.itemData[indexPath.section][indexPath.row].imageName)
         return cell
+    }
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension LibraryViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // MEMO: マイリストのみ遷移処理を実装
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                Router.showMyList(fromVC: self)
+            default: break
+            }
+        default: break
+        }
+        
+        collectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 

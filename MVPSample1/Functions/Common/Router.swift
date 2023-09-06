@@ -27,6 +27,11 @@ final class Router {
         fromVC.present(nextVC, animated: true)
     }
     
+    static func showMyList(fromVC: UIViewController) {
+        let nextVC = MyListViewController()
+        show(fromVC: fromVC, nextVC: nextVC)
+    }
+    
     private static func show(fromVC: UIViewController, nextVC: UIViewController) {
         if let nav = fromVC.navigationController {
             nav.pushViewController(nextVC, animated: true)

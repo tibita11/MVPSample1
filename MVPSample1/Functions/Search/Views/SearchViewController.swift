@@ -46,6 +46,10 @@ final class SearchViewController: UIViewController {
         self.presenter = presenter
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Layout
      
     private func setUpLayout() {

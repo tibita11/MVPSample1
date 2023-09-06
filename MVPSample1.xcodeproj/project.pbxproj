@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A54C21312AA8062F003ADFB2 /* MyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C21302AA8062F003ADFB2 /* MyListViewController.swift */; };
+		A54C21332AA81847003ADFB2 /* MyListViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54C21322AA81847003ADFB2 /* MyListViewPresenter.swift */; };
 		A5EDDD5A2AA1E993003A2C65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD592AA1E993003A2C65 /* AppDelegate.swift */; };
 		A5EDDD5C2AA1E993003A2C65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EDDD5B2AA1E993003A2C65 /* SceneDelegate.swift */; };
 		A5EDDD632AA1E995003A2C65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5EDDD622AA1E995003A2C65 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		A54C21302AA8062F003ADFB2 /* MyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewController.swift; sourceTree = "<group>"; };
+		A54C21322AA81847003ADFB2 /* MyListViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyListViewPresenter.swift; sourceTree = "<group>"; };
 		A5EDDD562AA1E993003A2C65 /* MVPSample1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVPSample1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5EDDD592AA1E993003A2C65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5EDDD5B2AA1E993003A2C65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A5EDDDAD2AA4C8F8003A2C65 /* LibraryViewPresenter.swift */,
+				A54C21322AA81847003ADFB2 /* MyListViewPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				A5EDDDA62AA38188003A2C65 /* SearchViewPresenter.swift in Sources */,
 				A54C21312AA8062F003ADFB2 /* MyListViewController.swift in Sources */,
 				A5EDDDB52AA573DD003A2C65 /* MyList+CoreDataProperties.swift in Sources */,
+				A54C21332AA81847003ADFB2 /* MyListViewPresenter.swift in Sources */,
 				A5EDDDA12AA37BF1003A2C65 /* CategoryCollectionViewCell.swift in Sources */,
 				A5EDDDA82AA46ACF003A2C65 /* AllWorksListViewController.swift in Sources */,
 				A5EDDD9E2AA23072003A2C65 /* Category.swift in Sources */,

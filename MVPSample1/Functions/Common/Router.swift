@@ -29,6 +29,8 @@ final class Router {
     
     static func showMyList(fromVC: UIViewController) {
         let nextVC = MyListViewController()
+        let nextPresenter = MyListViewPresenter(output: nextVC)
+        nextVC.inject(presenter: nextPresenter)
         show(fromVC: fromVC, nextVC: nextVC)
     }
     

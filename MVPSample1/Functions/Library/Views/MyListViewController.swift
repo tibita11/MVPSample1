@@ -12,6 +12,8 @@ class MyListViewController: UIViewController {
     private let titleLabel = UILabel()
     private let searchBar = UISearchBar()
     private var collectionView: UICollectionView!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, ItemData>!
+    private var presenter: MyListViewPresenterInput!
     
     private lazy var initViewLayout: Void = {
         setUpLayout()
@@ -39,7 +41,17 @@ class MyListViewController: UIViewController {
         _ = initViewLayout
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.fetchArray()
+    }
+    
     // MARK: - Action
+    
+    func inject(presenter: MyListViewPresenterInput) {
+        self.presenter = presenter
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -54,6 +66,7 @@ class MyListViewController: UIViewController {
         setUpTitleLabel()
         setUpSearchBar()
         configureCollectionView()
+        configureDataSource()
     }
     
     private func setUpGradientLayer() {
@@ -111,8 +124,16 @@ class MyListViewController: UIViewController {
     private func configureCollectionView() {
         // MEMO: CollectionViewの初期化
         let layout = UICollectionViewCompositionalLayout() { sectionIndex, layoutEnvironment in
-            var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-            return NSCollectionLayoutSection.list(using: configuration, layoutEnvironment: layoutEnvironment)
+            // MEMO: セルの大きさを指定する
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
+            // MEMO: アイテムのレイアウトを作成する
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            // MEMO: アイテムを含むグループのレイアウトを作成する
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(80))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            // MEMO: グループを含むセクションのレイアウトを作成する
+            let section = NSCollectionLayoutSection(group: group)
+            return section
         }
         collectionView = UICollectionView(frame: .null, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -126,5 +147,29 @@ class MyListViewController: UIViewController {
             collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -tabHeight),
             collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
         ])
+    }
+    
+    private func configureDataSource() {
+        let allWorksCellRegistration = UICollectionView.CellRegistration<AllWorksCollectionViewCell, ItemData> { cell, indexPath, itemData in
+            cell.titleLabel.text = itemData.title
+            cell.descriptionLabel.text = itemData.description
+        }
+        
+        dataSource = UICollectionViewDiffableDataSource(
+            collectionView: collectionView,
+            cellProvider: { collectionView, indexPath, itemIdentifier in
+                collectionView.dequeueConfiguredReusableCell(using: allWorksCellRegistration, for: indexPath, item: itemIdentifier)
+            })
+    }
+}
+
+// MARK: - MyListViewPresenterOutput
+
+extension MyListViewController: MyListViewPresenterOutput {
+    func applySnapshot(items: [ItemData]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, ItemData>()
+        snapshot.appendSections([.main])
+        snapshot.appendItems(items, toSection: .main)
+        dataSource.apply(snapshot, animatingDifferences: true)
     }
 }

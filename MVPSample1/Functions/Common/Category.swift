@@ -45,7 +45,7 @@ struct ItemSection {
     let items: [ItemData]
 }
 
-struct ItemData {
+struct ItemData: Hashable {
     let id: Int16
     let title: String
     let description: String

@@ -44,13 +44,22 @@ class MyListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        presenter.fetchArray()
+        searchWithText()
     }
     
     // MARK: - Action
     
     func inject(presenter: MyListViewPresenterInput) {
         self.presenter = presenter
+    }
+    
+    private func searchWithText() {
+        if let text = searchBar.text, text.first != nil {
+            self.presenter.fetchObject(searchWord: text)
+        } else {
+            // MEMO: 空欄なので全件取得
+            self.presenter.fetchArray()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -110,6 +119,8 @@ class MyListViewController: UIViewController {
         searchBar.searchTextField.layer.borderWidth = 0.5
         searchBar.searchTextField.layer.cornerRadius = 10
         searchBar.searchTextField.layer.masksToBounds = true
+        searchBar.searchTextField.textColor = .white
+        searchBar.delegate = self
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(searchBar)
         
@@ -182,6 +193,10 @@ extension MyListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         Router.showWorksDetail(fromVC: self, itemData: self.presenter.items[indexPath.row])
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
 }
 
 
@@ -190,6 +205,19 @@ extension MyListViewController: UICollectionViewDelegate {
 extension MyListViewController: UIAdaptivePresentationControllerDelegate {
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
         // MEMO: Dismiss後に再取得
-        presenter.fetchArray()
+        searchWithText()
+    }
+}
+
+
+// MARK: - UISearchBarDelegate
+
+extension MyListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchWithText()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

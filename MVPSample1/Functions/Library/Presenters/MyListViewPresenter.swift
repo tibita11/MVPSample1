@@ -14,6 +14,7 @@ enum Section {
 protocol MyListViewPresenterInput: AnyObject {
     var items: [ItemData] { get }
     func fetchArray()
+    func fetchObject(searchWord: String)
 }
 
 protocol MyListViewPresenterOutput: AnyObject {
@@ -23,6 +24,7 @@ protocol MyListViewPresenterOutput: AnyObject {
 
 class MyListViewPresenter {
     private weak var output: MyListViewPresenterOutput?
+    private var itemCache: [ItemData] = []
     
     init(output: MyListViewPresenterOutput) {
         self.output = output
@@ -34,11 +36,25 @@ class MyListViewPresenter {
 
 extension MyListViewPresenter: MyListViewPresenterInput {
     var items: [ItemData] {
-        let myList: [MyList] = CoreDataRepository.array()
-        return myList.map{ItemData(id: $0.id, title: $0.title ?? "", description: $0.detail ?? "")}
+        itemCache
     }
     
     func fetchArray() {
+        let myList: [MyList] = CoreDataRepository.array()
+        let items = myList.map{ItemData(id: $0.id, title: $0.title ?? "", description: $0.detail ?? "")}
+        itemCache = items
+        output?.applySnapshot(items: items)
+    }
+    
+    func fetchObject(searchWord: String) {
+        guard let myList: [MyList] = CoreDataRepository.fetchObject<MyList>(searchWord: searchWord) else {
+            // MEMO: 検索結果がない場合、空で返す
+            itemCache = []
+            output?.applySnapshot(items: [])
+            return
+        }
+        let items = myList.map{ItemData(id: $0.id, title: $0.title ?? "", description: $0.detail ?? "")}
+        itemCache = items
         output?.applySnapshot(items: items)
     }
 }

@@ -63,6 +63,18 @@ extension CoreDataRepository {
             fatalError("Error: CoreData取得処理に失敗しました。")
         }
     }
+    
+    static func fetchObject<T: NSManagedObject>(searchWord: String) -> [T]? {
+        let request = NSFetchRequest<T>(entityName: String(describing: T.self))
+        let predicate = NSPredicate(format:"title CONTAINS %@",searchWord)
+        request.predicate = predicate
+        
+        do {
+            return try context.fetch(request)
+        } catch {
+            fatalError("Error: CoreData取得処理に失敗しました。")
+        }
+    }
 }
 
 // MARK: context CRUD
